@@ -1,0 +1,22 @@
+apiVersion: app/v1
+kind: deployment
+metadata:
+  name: web
+  labels:
+    app: frontent
+
+spec:
+  selector:
+    matchlabel:
+      app: frontend
+  replicas: 3
+
+  template:
+    metadata:
+      name: web
+      labels: 
+        app: frontend
+      containers:
+        - name: web
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+          

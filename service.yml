@@ -4,9 +4,9 @@ metadata:
 	name: pod-service
 spec:
 	selector:
-		name: webapp
+    app: frontent
 	ports:
-		- name:http
+		- name: http
 		  port: 80
 		  nodePort: 80
 
