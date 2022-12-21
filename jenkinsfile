@@ -8,7 +8,7 @@ pipeline{
 		}
 		stage('copy files to container') {
 			steps{
-				sh 'exit'
+				sh 'exit && docker ps>out && cat out'
 			}
 		}
 		} 
