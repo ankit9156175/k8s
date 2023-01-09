@@ -1,0 +1,8 @@
+cat <<EOF >> ns.yml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+  labels:
+    app: nginx
+EOF

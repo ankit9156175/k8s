@@ -1,22 +1,31 @@
-apiVersion: app/v1
-kind: deployment
+cat <<EOF >> deployment.yml
+apiVersion: v1
+kind: Deployment
 metadata:
-  name: web
+  name: appdev
+  namespace: dev
   labels:
-    app: frontent
-
+    app: nginx
 spec:
+  replicas: 2
   selector:
-    matchlabel:
-      app: frontend
-  replicas: 3
-
+    matchLable:
+      app: nginx
   template:
     metadata:
-      name: web
-      labels: 
-        app: frontend
-      containers:
-        - name: web
-          image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
-          
+      labels:
+        app: nginx
+      namespace: dev
+    spec:
+      - name: nginximage
+        image: nginx:1.23
+        ports:
+          - containerport: 80
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "200Mi"
+          limits:
+            cpu: "100m"
+            memory: "200Mi"
+EOF

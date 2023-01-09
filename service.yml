@@ -1,13 +1,18 @@
+cat <<EOF>> service.yml
 apiVersion: v1
 kind: Service
 metadata:
-	name: pod-service
+  name: nginxsrv
+  labels:
+    app: nginx
+  namespace: dev
 spec:
-	selector:
-    app: frontent
-	ports:
-		- name: http
-		  port: 80
-		  nodePort: 80
-
-	type: NodePort
+  selector:
+    app: nginx
+  type: nodePort
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30051
+EOF
